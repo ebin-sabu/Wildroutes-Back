@@ -12,12 +12,13 @@ const mongoose = require('mongoose')
 
 // Require express package and invoke express method
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 
 // Middleware 
 //mw to look to see if there's data
-app.use(express.json())
+app.use(cors(express.json()))
 //mw to log requests
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -25,8 +26,8 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use('/api/routes', routes)
-app.use('/api/user', userRoutes)
+app.use(cors('/api/routes', routes))
+app.use(cors('/api/user', userRoutes))
 
 /* Set up a route handler requests and responses
 app.get('/', (req, res) => {
