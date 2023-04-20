@@ -56,7 +56,7 @@ const routeSchema = new Schema({
     },
     rating:{
         type: String,
-        default: "No rating"
+        default: ""
     }
 })
 
