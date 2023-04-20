@@ -17,8 +17,9 @@ const app = express()
 
 
 // Middleware 
+app.use(cors())
 //mw to look to see if there's data
-app.use(cors(express.json()))
+app.use(express.json())
 //mw to log requests
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -26,8 +27,8 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use(cors('/api/routes', routes))
-app.use(cors('/api/user', userRoutes))
+app.use('/api/routes', routes)
+app.use('/api/user', userRoutes)
 
 /* Set up a route handler requests and responses
 app.get('/', (req, res) => {
